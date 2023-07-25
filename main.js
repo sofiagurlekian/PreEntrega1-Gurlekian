@@ -1,11 +1,11 @@
 /*Nombre y Edad*/
 
-let nombre = prompt("Ingrese su nombre");
-let apellido = prompt ("Ingrese su apellido");
-function saludar(){
-    let saludo = "Bienvenido/a a TRAM: su casa de cambio de confianza."
-    alert (saludo);
-}
+// let nombre = prompt("Ingrese su nombre");
+// let apellido = prompt ("Ingrese su apellido");
+// function saludar(){
+//     let saludo = "Bienvenido/a a TRAM: su casa de cambio de confianza."
+//     alert (saludo);
+// }
 
 while (nombre === "" || apellido === "") {
         alert("Debe ingresar nombre y apellido.");
@@ -89,7 +89,7 @@ if (edad >= 18){
            tipoDeCambio();
 
            // Pido al usuario que ingrese la cantidad a convertir y la moneda de origen
-        let cantidad = parseFloat(prompt("Ingrese la cantidad de dinero que desea cambiar"));
+        let cantidad = parseFloat(prompt("Ingrese la cantidad de dinero que desea cambiar a pesos argentinos"));
         let monedaOrigen = prompt("Ingrese el código de la moneda de origen (ARS, USD, BRL o UYU)").toLowerCase();
         let tasaDeCambio;
 
@@ -117,7 +117,7 @@ if (edad >= 18){
             }
   
         let cantidadConvertida = convertirDivisas(cantidad, tasaDeCambio, monedaOrigen);
-        alert(`Cantidad convertida: ${cantidadConvertida}`+ " ARS");
+        alert(`Cantidad convertida: ${cantidadConvertida}`+ " ARS"); /*Solo se podrán comprar pesos argentinos*/
         }
 }else {
     alert ("No puede operar en el mercado cambiario.");
@@ -125,5 +125,5 @@ if (edad >= 18){
     
 
 
-
+console.log(tasaDeCambio);
     
