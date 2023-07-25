@@ -48,7 +48,7 @@ function tipoDeCambio() {
 }
 
 function convertirDivisas(cantidad, tasaDeCambio, monedaOrigen) {
-    // Utilizamos un switch para determinar la tasa de cambio según la moneda de origen
+    // Switch para determinar la tasa de cambio según la moneda de origen
     switch (monedaOrigen) {
       case "ars":
         return cantidad * tasaDeCambio;
@@ -88,7 +88,7 @@ if (edad >= 18){
            //Seleccione la moneda
            tipoDeCambio();
 
-           // Pedimos al usuario que ingrese la cantidad a convertir y la moneda de origen
+           // Pido al usuario que ingrese la cantidad a convertir y la moneda de origen
         let cantidad = parseFloat(prompt("Ingrese la cantidad de dinero que desea cambiar"));
         let monedaOrigen = prompt("Ingrese el código de la moneda de origen (ARS, USD, BRL o UYU)").toLowerCase();
         let tasaDeCambio;
@@ -117,7 +117,7 @@ if (edad >= 18){
             }
   
         let cantidadConvertida = convertirDivisas(cantidad, tasaDeCambio, monedaOrigen);
-        alert(`Cantidad convertida: ${cantidadConvertida}`);
+        alert(`Cantidad convertida: ${cantidadConvertida}`+ " ARS");
         }
 }else {
     alert ("No puede operar en el mercado cambiario.");
