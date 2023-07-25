@@ -90,15 +90,12 @@ if (edad >= 18){
 
            // Pido al usuario que ingrese la cantidad a convertir y la moneda de origen
         let cantidad = parseFloat(prompt("Ingrese la cantidad de dinero que desea cambiar a pesos argentinos"));
-        let monedaOrigen = prompt("Ingrese el código de la moneda de origen (ARS, USD, BRL o UYU)").toLowerCase();
+        let monedaOrigen = prompt("Ingrese el código de la moneda de origen (USD, BRL o UYU)").toLowerCase();
         let tasaDeCambio;
 
         // Switch para asignar la tasa de cambio según la moneda de origen
         switch (monedaOrigen) {
-            case "ars":
-                tasaDeCambio = valorArs;
-            break;
-  
+            
             case "usd":
                 tasaDeCambio = valorUsd;
             break;
