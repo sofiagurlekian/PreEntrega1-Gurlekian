@@ -47,35 +47,26 @@ function tipoDeCambio() {
     }
 }
 
-function convertirDivisas(cantidad, tasaDeCambio) {
-  // Utilizamos un switch para determinar la tasa de cambio según la moneda de origen
-  switch (monedaOrigen) {
+function convertirDivisas(cantidad, tasaDeCambio, monedaOrigen) {
+    // Utilizamos un switch para determinar la tasa de cambio según la moneda de origen
+    switch (monedaOrigen) {
       case "ars":
-          cantidadConvertida = convertirDivisas(cantidad, valorArs);
-      break;
-
+        return cantidad * tasaDeCambio;
+  
       case "usd":
-          cantidadConvertida = convertirDivisas(cantidad, valorUsd);
-      break;
-
+        return cantidad * tasaDeCambio;
+  
       case "brl":
-          cantidadConvertida = convertirDivisas(cantidad, valorBrl);
-      break;
-
+        return cantidad * tasaDeCambio;
+  
       case "uyu":
-          cantidadConvertida = convertirDivisas(cantidad, valorUyu);
-      break;
-
+        return cantidad * tasaDeCambio;
+  
       default:
-          cantidadConvertida = "Moneda no reconocida";
-      break;
-      }
-
-      alert(`Cantidad convertida: ${cantidadConvertida}`);
-
-      return cantidad * tasaDeCambio;
-}    
-
+        return "Moneda no reconocida";
+    }
+  }
+  
 
 
 
@@ -100,8 +91,33 @@ if (edad >= 18){
            // Pedimos al usuario que ingrese la cantidad a convertir y la moneda de origen
         let cantidad = parseFloat(prompt("Ingrese la cantidad de dinero que desea cambiar"));
         let monedaOrigen = prompt("Ingrese el código de la moneda de origen (ARS, USD, BRL o UYU)").toLowerCase();
-        let cantidadConvertida;
-           convertirDivisas (cantidad, tasaDeCambio);
+        let tasaDeCambio;
+
+        // Switch para asignar la tasa de cambio según la moneda de origen
+        switch (monedaOrigen) {
+            case "ars":
+                tasaDeCambio = valorArs;
+            break;
+  
+            case "usd":
+                tasaDeCambio = valorUsd;
+            break;
+  
+            case "brl":
+                tasaDeCambio = valorBrl;
+            break;
+  
+            case "uyu":
+                tasaDeCambio = valorUyu;
+            break;
+  
+            default:
+                tasaDeCambio = 0; 
+            break;
+            }
+  
+        let cantidadConvertida = convertirDivisas(cantidad, tasaDeCambio, monedaOrigen);
+        alert(`Cantidad convertida: ${cantidadConvertida}`);
         }
 }else {
     alert ("No puede operar en el mercado cambiario.");
