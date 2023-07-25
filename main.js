@@ -73,7 +73,7 @@ function convertirDivisas(cantidad, tasaDeCambio) {
 
       alert(`Cantidad convertida: ${cantidadConvertida}`);
 
-      return convertirDivisas;
+      return cantidad * tasaDeCambio;
 }    
 
 
