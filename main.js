@@ -1,11 +1,11 @@
 /*Nombre y Edad*/
 
-// let nombre = prompt("Ingrese su nombre");
-// let apellido = prompt ("Ingrese su apellido");
-// function saludar(){
-//     let saludo = "Bienvenido/a a TRAM: su casa de cambio de confianza."
-//     alert (saludo);
-// }
+let nombre = prompt("Ingrese su nombre");
+let apellido = prompt ("Ingrese su apellido");
+function saludar(){
+    let saludo = "Bienvenido/a a TRAM: su casa de cambio de confianza."
+    alert (saludo);
+}
 
 while (nombre === "" || apellido === "") {
         alert("Debe ingresar nombre y apellido.");
@@ -124,6 +124,4 @@ if (edad >= 18){
 }
     
 
-
-console.log(tasaDeCambio);
     
