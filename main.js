@@ -3,7 +3,7 @@
 let nombre = prompt("Ingrese su nombre");
 let apellido = prompt ("Ingrese su apellido");
 
-while (nombre === "" && apellido === "") {
+while (nombre === "" || apellido === "") {
         alert("Debe ingresar nombre y apellido.");
         nombre = prompt("Ingrese su nombre");
         apellido = prompt("Ingrese su apellido");
