@@ -120,5 +120,58 @@ if (edad >= 18){
     alert ("No puede operar en el mercado cambiario.");
 }
     
+//Seleccion de sucursal en donde se retirará el dinero cambiado a ARS
 
+class SucursalCasaDeCambio {
+    constructor (sucursal, nombre, direccion, imagen){
+
+        this.sucursal = sucursal
+        this.nombre = nombre
+        this.direccion = direccion;
+        this.imagen = imagen;
+    }
+  
+    // mostrarMensaje = function () {
+    // alert(`Perfecto! Ha seleccionado ${this.nombre} en ${this.direccion} ${sucursal}. Lo esperamos de Lunes a Viernes de 10 a 18hs.`    );
+      
+    // };
+  }
+  
+  // Nombres y direcciones de las sucursales
+//   const sucursalCasaDeCambio1 = new SucursalCasaDeCambio( "TRAM: Sucursal CABA", "Av. Medrano 1556", "http://");
+//   const sucursalCasaDeCambio2 = new SucursalCasaDeCambio( "TRAM: Sucursal Provincia de Buenos Aires", "Murgiondo 388", "https://");
+    
+  
+//   // Probar la función seleccionar con diferentes sucursales
+//   let elegirSucursal = prompt("Usted reside en CABA o en la Provincia de Buenos Aires?").toLowerCase();
+
+//   if (elegirSucursal = "CABA"){
+//     sucursalCasaDeCambio1.mostrarMensaje();
+//   } else{
+//     sucursalCasaDeCambio2.mostrarMensaje();
+//   }
+  
+const sucursales = [];
+
+sucursales.push(new SucursalCasaDeCambio("CABA","TRAM: Sucursal Almagro", "Av. Medrano 1556", "http://"));
+sucursales.push(new SucursalCasaDeCambio("Provincia de Buenos Aires","TRAM: Sucursal Valentin Alsina", "Murgiondo 388", "https://"));
+
+let elegirSucursal = prompt("Usted reside en CABA o en Provincia de Buenos Aires?").toLowerCase();
+let sede;
+
+for (let index = 0; index < sucursales.length; index++) {
+  if (sucursales[index].sucursal.toLowerCase() === elegirSucursal) {
+    sede = sucursales[index];
+    break;
+  }
+}
+
+if (sede) {
+    alert(`Perfecto! Ha seleccionado ${sede.nombre} en ${sede.direccion} ${sede.sucursal}. Lo esperamos de Lunes a Viernes de 10 a 18hs.`);
+  } else {
+    alert("Selección inválida. Por favor, elige entre CABA o Provincia de Buenos Aires.");
+  }
+  
+
+  
     
