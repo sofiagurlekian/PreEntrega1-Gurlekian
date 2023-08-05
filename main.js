@@ -22,13 +22,9 @@ let valorBrl = 100;
 let valorUyu = 50;
 
 function tipoDeCambio() {
-    let moneda = prompt("Ingrese el código de la moneda con la que desea operar").toLowerCase();
+    let moneda = prompt("Ingrese el código de la moneda con la que desea operar USD, BRL o UYU").toLowerCase();
 
     switch (moneda) {
-        case "ars":
-            alert ("Moneda de Argentina\n1 ARS = " + valorArs + " ARS");
-            break;
-
         case "usd":
             alert ("Moneda de Estados Unidos\n1 USD = " + valorUsd + " ARS");
             break;
@@ -50,9 +46,6 @@ function tipoDeCambio() {
 function convertirDivisas(cantidad, tasaDeCambio, monedaOrigen) {
     // Switch para determinar la tasa de cambio según la moneda de origen
     switch (monedaOrigen) {
-      case "ars":
-        return cantidad * tasaDeCambio;
-  
       case "usd":
         return cantidad * tasaDeCambio;
   
@@ -95,7 +88,7 @@ if (edad >= 18){
 
         // Switch para asignar la tasa de cambio según la moneda de origen
         switch (monedaOrigen) {
-            
+        
             case "usd":
                 tasaDeCambio = valorUsd;
             break;
@@ -116,26 +109,50 @@ if (edad >= 18){
         let cantidadConvertida = convertirDivisas(cantidad, tasaDeCambio, monedaOrigen);
         alert(`Cantidad convertida: ${cantidadConvertida}`+ " ARS"); /*Solo se podrán comprar pesos argentinos*/
         }
+
+        //Seleccion de sucursal en donde se retirará el dinero cambiado a ARS
+        class SucursalCasaDeCambio {
+            constructor (sucursal, nombre, direccion, imagen){
+        
+                this.sucursal = sucursal
+                this.nombre = nombre
+                this.direccion = direccion;
+                this.imagen = imagen;
+            }
+        }
+        
+        const sucursales = [];
+
+        sucursales.push(new SucursalCasaDeCambio("CABA","TRAM: Sucursal Almagro", "Av. Medrano 1556", "http://"));
+        sucursales.push(new SucursalCasaDeCambio("Provincia de Buenos Aires","TRAM: Sucursal Valentin Alsina", "Murgiondo 388", "https://"));
+
+        let elegirSucursal = prompt("Usted reside en CABA o en Provincia de Buenos Aires? Escriba CABA o Provincia de Buenos Aires, dependiendo de la localidad.").toLowerCase();
+        let sede;
+
+        for (let index = 0; index < sucursales.length; index++) {
+        if (sucursales[index].sucursal.toLowerCase() === elegirSucursal) {
+            sede = sucursales[index];
+            break;
+            }
+        }
+
+        if (sede) {
+            alert(`Perfecto! Ha seleccionado ${sede.nombre} en ${sede.direccion} ${sede.sucursal}. Lo esperamos de Lunes a Viernes de 10 a 18hs.`);
+        } else {
+            alert("Selección inválida. Por favor, elige entre CABA o Provincia de Buenos Aires.");
+        }
+  
 }else {
     alert ("No puede operar en el mercado cambiario.");
 }
     
 //Seleccion de sucursal en donde se retirará el dinero cambiado a ARS
-
-class SucursalCasaDeCambio {
-    constructor (sucursal, nombre, direccion, imagen){
-
-        this.sucursal = sucursal
-        this.nombre = nombre
-        this.direccion = direccion;
-        this.imagen = imagen;
-    }
   
     // mostrarMensaje = function () {
     // alert(`Perfecto! Ha seleccionado ${this.nombre} en ${this.direccion} ${sucursal}. Lo esperamos de Lunes a Viernes de 10 a 18hs.`    );
       
     // };
-  }
+  
   
   // Nombres y direcciones de las sucursales
 //   const sucursalCasaDeCambio1 = new SucursalCasaDeCambio( "TRAM: Sucursal CABA", "Av. Medrano 1556", "http://");
@@ -150,27 +167,6 @@ class SucursalCasaDeCambio {
 //   } else{
 //     sucursalCasaDeCambio2.mostrarMensaje();
 //   }
-  
-const sucursales = [];
-
-sucursales.push(new SucursalCasaDeCambio("CABA","TRAM: Sucursal Almagro", "Av. Medrano 1556", "http://"));
-sucursales.push(new SucursalCasaDeCambio("Provincia de Buenos Aires","TRAM: Sucursal Valentin Alsina", "Murgiondo 388", "https://"));
-
-let elegirSucursal = prompt("Usted reside en CABA o en Provincia de Buenos Aires?").toLowerCase();
-let sede;
-
-for (let index = 0; index < sucursales.length; index++) {
-  if (sucursales[index].sucursal.toLowerCase() === elegirSucursal) {
-    sede = sucursales[index];
-    break;
-  }
-}
-
-if (sede) {
-    alert(`Perfecto! Ha seleccionado ${sede.nombre} en ${sede.direccion} ${sede.sucursal}. Lo esperamos de Lunes a Viernes de 10 a 18hs.`);
-  } else {
-    alert("Selección inválida. Por favor, elige entre CABA o Provincia de Buenos Aires.");
-  }
   
 
   
