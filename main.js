@@ -141,6 +141,34 @@ if (edad >= 18){
         } else {
             alert("Selección inválida. Por favor, elige entre CABA o Provincia de Buenos Aires.");
         }
+
+       // .filter()
+        let mostrarTodas = prompt("¿Deseas conocer todas las sucursales? (Sí / No)").toLowerCase();
+
+        if (mostrarTodas === "sí" || mostrarTodas === "si") {
+        let todasLasSucursales = sucursales.filter(sucursal => true);
+
+            if (todasLasSucursales.length > 0) {
+                alert("Información de todas las sucursales:");
+
+                todasLasSucursales.forEach(sucursal => {
+                alert(`
+                 Sucursal: ${sucursal.sucursal}
+                 Nombre: ${sucursal.nombre}
+                 Dirección: ${sucursal.direccion}
+                 `);
+                });
+            } else {
+                alert("No se encontraron sucursales.");
+            }
+        } else {
+             alert("Gracias por tu respuesta. ¡Hasta luego!");
+        }
+
+
+
+
+
   
 }else {
     alert ("No puede operar en el mercado cambiario.");
