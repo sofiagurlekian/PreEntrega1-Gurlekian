@@ -9,10 +9,32 @@
 <body>
     <header>
         <h1>TRAM</h1>
-        <h2>Casa de Cambio</h2>
+        <h2>Casa de Cambio: Cambiamos tu moneda a pesos argentinos!</h2>
+
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="./pages/quienes-somos.html">Quienes Somos</a></li>
+            </ul>
+        </nav>
+
     </header>
     
     <main>
+        <title>Conversor de moneda</title>
+        <div id="formulario">
+            <h2>Monto a cambiar a Pesos Argentinos</h2>
+            <form action="#" method="post">
+                <input type="number" name="monto" placeholder="Ingrese el monto" required>
+                <select name="moneda">
+                    <option value="usd">USD</option>
+                    <option value="brl">BRL</option>
+                    <option value="uyu">UYU</option>
+                </select>
+                <input type="submit" value="Cambiar">
+            </form>
+        </div>
+
     <div class="sucursales-container">
       <div class="sucursal">
         <h2>Sucursal 1</h2>

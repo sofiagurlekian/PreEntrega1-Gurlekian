@@ -16,6 +16,26 @@ body, h1, h2, p {
     text-align: center;
   }
   
+  nav {
+    text-align: center;
+ }
+
+    nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 20px;
+ }
+
+    nav ul li {
+    display: inline-block;
+    margin-right: 20px;
+ }
+
+    nav ul li a{
+    color:#f5f5f5;
+ }
+
   h1 {
     font-size: 36px;
   }
@@ -40,12 +60,28 @@ body, h1, h2, p {
   
   .sucursal img {
     display: block;
-    max-width: 100%;
+    max-width: 50%;
     margin-top: 10px;
     border-radius: 4px;
   }
   
-  
+
+
+    #formulario {
+    margin: 100px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    }
+
+    select, input {
+    margin: 5px;
+    padding: 0px;
+    width: 100%;
+}
+
   footer {
     background-color: #007BFF;
     color: #fff;
