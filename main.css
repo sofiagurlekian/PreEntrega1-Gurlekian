@@ -82,6 +82,20 @@ body, h1, h2, p {
     width: 100%;
 }
 
+  /* Definición de colores para las clases de mensaje */
+.mensaje-usd {
+  color: blue;
+}
+
+.mensaje-brl {
+  color: green;
+}
+
+.mensaje-uyu {
+  color: red;
+}
+
+
   footer {
     background-color: #007BFF;
     color: #fff;

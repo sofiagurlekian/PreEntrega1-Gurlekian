@@ -16,52 +16,70 @@ while (nombre === "" || apellido === "") {
 saludar();
 
 let edad = Number(prompt("Ingrese su edad"));
-let valorArs = 1;
-let valorUsd = 550;
-let valorBrl = 100;
-let valorUyu = 50;
+// let valorArs = 1;
+// let valorUsd = 550;
+// let valorBrl = 100;
+// let valorUyu = 50;
 
-function tipoDeCambio() {
-    let moneda = prompt("Ingrese el código de la moneda con la que desea operar USD, BRL o UYU").toLowerCase();
+// function tipoDeCambio() {
+//     let moneda = prompt("Ingrese el código de la moneda con la que desea operar USD, BRL o UYU").toLowerCase();
 
-    switch (moneda) {
-        case "usd":
-            alert ("Moneda de Estados Unidos\n1 USD = " + valorUsd + " ARS");
-            break;
+//     switch (moneda) {
+//         case "usd":
+//             alert ("Moneda de Estados Unidos\n1 USD = " + valorUsd + " ARS");
+//             break;
 
-        case "brl":
-            alert ("Moneda de Brasil\n1 BRL = " + valorBrl + " ARS");
-            break;
+//         case "brl":
+//             alert ("Moneda de Brasil\n1 BRL = " + valorBrl + " ARS");
+//             break;
 
-        case "uyu":
-            alert ("Moneda de Uruguay\n1 UYU = " + valorUyu + " ARS");
-            break;
+//         case "uyu":
+//             alert ("Moneda de Uruguay\n1 UYU = " + valorUyu + " ARS");
+//             break;
 
-        default:
-            alert ("Moneda no reconocida");
-            break;
-    }
-}
+//         default:
+//             alert ("Moneda no reconocida");
+//             break;
+//     }
+// }
 
-function convertirDivisas(cantidad, tasaDeCambio, monedaOrigen) {
-    // Switch para determinar la tasa de cambio según la moneda de origen
-    switch (monedaOrigen) {
-      case "usd":
-        return cantidad * tasaDeCambio;
+// function convertirDivisas(cantidad, tasaDeCambio, monedaOrigen) {
+//     // Switch para determinar la tasa de cambio según la moneda de origen
+//     switch (monedaOrigen) {
+//       case "usd":
+//         return cantidad * tasaDeCambio;
   
-      case "brl":
-        return cantidad * tasaDeCambio;
+//       case "brl":
+//         return cantidad * tasaDeCambio;
   
-      case "uyu":
-        return cantidad * tasaDeCambio;
+//       case "uyu":
+//         return cantidad * tasaDeCambio;
   
-      default:
-        return "Moneda no reconocida";
-    }
+//       default:
+//         return "Moneda no reconocida";
+//     }
+//   }
+
+// Objeto que almacena las tasas de cambio
+let tasasDeCambio = {
+    usd: 550,
+    brl: 100,
+    uyu: 50
+  };
+  
+  function tipoDeCambio() {
+    let moneda = prompt("Ingrese el código de la moneda con la que desea operar: USD, BRL o UYU").toLowerCase();
+    if (moneda in tasasDeCambio) {
+        alert(`1 ${moneda.toUpperCase()} = ${tasasDeCambio[moneda]} ARS`);
+      } else {
+        alert("Moneda no reconocida");
+      }
   }
   
-
-
+  function convertirDivisas(cantidad, tasaDeCambio) {
+        return cantidad * tasaDeCambio;
+    }
+  
 
 if (edad >= 18){
     let subsidio = prompt ("Es usted beneficiario del subsidio a las tarifas de electricidad, gas y agua?").toLowerCase();
@@ -84,32 +102,16 @@ if (edad >= 18){
            // Pido al usuario que ingrese la cantidad a convertir y la moneda de origen
         let cantidad = parseFloat(prompt("Ingrese la cantidad de dinero que desea cambiar a pesos argentinos"));
         let monedaOrigen = prompt("Ingrese el código de la moneda de origen (USD, BRL o UYU)").toLowerCase();
-        let tasaDeCambio;
+        let tasaDeCambio = tasasDeCambio[monedaOrigen];
 
-        // Switch para asignar la tasa de cambio según la moneda de origen
-        switch (monedaOrigen) {
+        if (tasaDeCambio !== undefined) {
+            let cantidadConvertida = convertirDivisas(cantidad, tasaDeCambio);
+            alert(`Cantidad convertida: ${cantidadConvertida} ARS`);
+          } else {
+            alert("Moneda no reconocida");
+          }
+
         
-            case "usd":
-                tasaDeCambio = valorUsd;
-            break;
-  
-            case "brl":
-                tasaDeCambio = valorBrl;
-            break;
-  
-            case "uyu":
-                tasaDeCambio = valorUyu;
-            break;
-  
-            default:
-                tasaDeCambio = 0; 
-            break;
-            }
-  
-        let cantidadConvertida = convertirDivisas(cantidad, tasaDeCambio, monedaOrigen);
-        alert(`Cantidad convertida: ${cantidadConvertida}`+ " ARS"); /*Solo se podrán comprar pesos argentinos*/
-        }
-
         //Seleccion de sucursal en donde se retirará el dinero cambiado a ARS
         class SucursalCasaDeCambio {
             constructor (sucursal, nombre, direccion, imagen){
@@ -164,38 +166,33 @@ if (edad >= 18){
         } else {
              alert("Gracias por tu respuesta. ¡Hasta luego!");
         }
-
-
-
-
-
-  
+        }
 }else {
     alert ("No puede operar en el mercado cambiario.");
 }
     
-//Seleccion de sucursal en donde se retirará el dinero cambiado a ARS
   
-    // mostrarMensaje = function () {
-    // alert(`Perfecto! Ha seleccionado ${this.nombre} en ${this.direccion} ${sucursal}. Lo esperamos de Lunes a Viernes de 10 a 18hs.`    );
-      
-    // };
-  
-  
-  // Nombres y direcciones de las sucursales
-//   const sucursalCasaDeCambio1 = new SucursalCasaDeCambio( "TRAM: Sucursal CABA", "Av. Medrano 1556", "http://");
-//   const sucursalCasaDeCambio2 = new SucursalCasaDeCambio( "TRAM: Sucursal Provincia de Buenos Aires", "Murgiondo 388", "https://");
-    
-  
-//   // Probar la función seleccionar con diferentes sucursales
-//   let elegirSucursal = prompt("Usted reside en CABA o en la Provincia de Buenos Aires?").toLowerCase();
+//HTML a Javascript
 
-//   if (elegirSucursal = "CABA"){
-//     sucursalCasaDeCambio1.mostrarMensaje();
-//   } else{
-//     sucursalCasaDeCambio2.mostrarMensaje();
-//   }
-  
+
+const seleccionarMoneda = document.getElementsByTagName("select")[0];
+const mensajeMoneda = document.getElementById("mensaje-moneda");
+
+// Agrego evento al formulario para mostrar el mensaje
+seleccionarMoneda.addEventListener("change", function() {
+  const monedaSeleccionada = seleccionarMoneda.value;
+
+  if (monedaSeleccionada === "usd") {
+    mensajeMoneda.innerHTML = "Usted está seleccionando: Dolares Americanos";
+    mensajeMoneda.className = "mensaje-usd";
+  } else if (monedaSeleccionada === "brl") {
+    mensajeMoneda.innerHTML = "Usted está seleccionando: Reales";
+    mensajeMoneda.className = "mensaje-brl";
+  } else if (monedaSeleccionada === "uyu") {
+    mensajeMoneda.innerHTML = "Usted está seleccionando: Pesos Uruguayos";
+    mensajeMoneda.className = "mensaje-uyu";
+  }
+});
 
   
-    
+
