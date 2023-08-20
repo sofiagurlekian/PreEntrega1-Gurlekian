@@ -194,5 +194,33 @@ seleccionarMoneda.addEventListener("change", function() {
   }
 });
 
+let monto = document.getElementById("monto");
+
+monto.addEventListener("keyup", (e) => {
+    const valorMonto = parseFloat(monto.value);
+
+    if (!isNaN(valorMonto) && valorMonto >= 1000) {
+        monto.className = "rojo";
+    } else{
+        monto.className = "verde";
+    }
+});
+
+let formulario = document.getElementById("formulario");
+
+formulario.addEventListener("submit", (e) => {
+  e.preventDefault();
+  let inputs = e.target.children;
+
+  if(inputs[0].value === ""){
+    alert("Campo Obligatorio")
+  } else if(inputs[1].value === "Elija la moneda con la que desea operar"){
+    alert("Elija una moneda")
+  } else{
+    alert("Campos completados correctamente.")
+  }
+});
+
+
   
 
