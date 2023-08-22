@@ -10,7 +10,7 @@ body, h1, h2, p {
   }
   
   header {
-    background-color: #007BFF;
+    background-color: #67829f;
     color: #fff;
     padding: 20px;
     text-align: center;
@@ -40,6 +40,14 @@ body, h1, h2, p {
     font-size: 36px;
   }
   
+  h3{
+    text-align: center;
+  }
+
+  .estilar{
+    text-align: center;
+    border: solid 2px;
+  }
   .sucursal {
     background-color: #fff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -97,15 +105,15 @@ body, h1, h2, p {
 
 
 .rojo{
-  background-color: red;
+  background-color: rgb(187, 148, 148);
 }
 
 .verde{
-  background-color: green;
+  background-color: rgb(124, 174, 124);
 }
 
   footer {
-    background-color: #007BFF;
+    background-color: #67829f;
     color: #fff;
     text-align: center;
     padding: 10px;

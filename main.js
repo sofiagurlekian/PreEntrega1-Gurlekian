@@ -1,64 +1,31 @@
 /*Nombre y Edad*/
 
-let nombre = prompt("Ingrese su nombre");
-let apellido = prompt ("Ingrese su apellido");
-function saludar(){
-    let saludo = "Bienvenido/a a TRAM: su casa de cambio de confianza."
-    alert (saludo);
+let nombre = localStorage.getItem("nombre");
+let apellido = localStorage.getItem("apellido");
+let edad = localStorage.getItem("edad");
+
+if (nombre === null || apellido === null || edad === null) {
+  nombre = prompt("Ingrese su nombre");
+  apellido = prompt("Ingrese su apellido");
+  edad = Number(prompt("Ingrese su edad"));
+
+  while (nombre === "" || apellido === "" || isNaN(edad)) {
+    alert("Debe ingresar nombre, apellido y edad válida.");
+    nombre = prompt("Ingrese su nombre");
+    apellido = prompt("Ingrese su apellido");
+    edad = Number(prompt("Ingrese su edad"));
+  }
+
+  localStorage.setItem("Nombre", nombre);
+  localStorage.setItem("Apellido", apellido);
+  localStorage.setItem("Edad", edad);
+
+  alert(`Bienvenido/a a TRAM: su casa de cambio de confianza, ${nombre} ${apellido}.`);
+} else {
+  alert(`Bienvenido/a nuevamente a TRAM, ${nombre} ${apellido}.`);
 }
 
-while (nombre === "" || apellido === "") {
-        alert("Debe ingresar nombre y apellido.");
-        nombre = prompt("Ingrese su nombre");
-        apellido = prompt("Ingrese su apellido");
-} 
 
-saludar();
-
-let edad = Number(prompt("Ingrese su edad"));
-// let valorArs = 1;
-// let valorUsd = 550;
-// let valorBrl = 100;
-// let valorUyu = 50;
-
-// function tipoDeCambio() {
-//     let moneda = prompt("Ingrese el código de la moneda con la que desea operar USD, BRL o UYU").toLowerCase();
-
-//     switch (moneda) {
-//         case "usd":
-//             alert ("Moneda de Estados Unidos\n1 USD = " + valorUsd + " ARS");
-//             break;
-
-//         case "brl":
-//             alert ("Moneda de Brasil\n1 BRL = " + valorBrl + " ARS");
-//             break;
-
-//         case "uyu":
-//             alert ("Moneda de Uruguay\n1 UYU = " + valorUyu + " ARS");
-//             break;
-
-//         default:
-//             alert ("Moneda no reconocida");
-//             break;
-//     }
-// }
-
-// function convertirDivisas(cantidad, tasaDeCambio, monedaOrigen) {
-//     // Switch para determinar la tasa de cambio según la moneda de origen
-//     switch (monedaOrigen) {
-//       case "usd":
-//         return cantidad * tasaDeCambio;
-  
-//       case "brl":
-//         return cantidad * tasaDeCambio;
-  
-//       case "uyu":
-//         return cantidad * tasaDeCambio;
-  
-//       default:
-//         return "Moneda no reconocida";
-//     }
-//   }
 
 // Objeto que almacena las tasas de cambio
 let tasasDeCambio = {
@@ -174,7 +141,6 @@ if (edad >= 18){
   
 //HTML a Javascript
 
-
 const seleccionarMoneda = document.getElementsByTagName("select")[0];
 const mensajeMoneda = document.getElementById("mensaje-moneda");
 
@@ -206,7 +172,9 @@ monto.addEventListener("keyup", (e) => {
     }
 });
 
+let info = [];
 let formulario = document.getElementById("formulario");
+let historial = [];
 
 formulario.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -217,10 +185,43 @@ formulario.addEventListener("submit", (e) => {
   } else if(inputs[1].value === "Elija la moneda con la que desea operar"){
     alert("Elija una moneda")
   } else{
-    alert("Campos completados correctamente.")
+    let conversion = {
+        monto: parseFloat(inputs[0].value),
+        moneda: inputs[1].value,
+      };
+    
+    info.push(conversion);
+    
+    // alert(JSON.stringify(info));
+
+    let tasaDeCambio = tasasDeCambio[conversion.moneda];
+    let montoConvertido = conversion.monto * tasaDeCambio;
+
+    alert(`Monto convertido a ARS: ${montoConvertido}`);
+
+    //JSON
+
+    localStorage.setItem("conversion", JSON.stringify(conversion));
+    let historialStorage = localStorage.getItem("historial") || [];
+    historial.push(conversion);
+    localStorage.setItem("historial", JSON.stringify(historial));
   }
+
+  // Limpio el contenido anterior del historial antes de llenarlo nuevamente
+  let historialDiv = document.getElementById("historialDiv");
+  historialDiv.innerHTML = "";
+
+  historial.forEach((conversion) => {
+    let div = document.createElement("div");
+    div.innerHTML = `
+      <b>Monto: ${conversion.monto}</b>
+      <p>Moneda: ${conversion.moneda}</p>
+    `;
+    div.className = "estilar";
+    historialDiv.appendChild(div);
+  });
 });
 
 
-  
+
 
