@@ -202,6 +202,7 @@ formulario.addEventListener("submit", (e) => {
     //JSON
 
     localStorage.setItem("conversion", JSON.stringify(conversion));
+    //Creo una copia local del historial almacenado en el almacenamiento local. La uso para mostrar la información de conversiones que realizo el usuario en la web. 
     let historialStorage = localStorage.getItem("historial") || [];
     historial.push(conversion);
     localStorage.setItem("historial", JSON.stringify(historial));
@@ -215,11 +216,26 @@ formulario.addEventListener("submit", (e) => {
     let div = document.createElement("div");
     div.innerHTML = `
       <b>Monto: ${conversion.monto}</b>
-      <p>Moneda: ${conversion.moneda}</p>
+      <p>Moneda: ${ conversion.moneda}</p>
     `;
     div.className = "estilar";
     historialDiv.appendChild(div);
   });
+
+  // Botón de eliminar historial
+    let eliminar = document.getElementById("eliminarHistorial");
+
+
+    eliminar.addEventListener("click", () => {
+    // Elimino los datos de historial del almacenamiento local
+    localStorage.removeItem("historial");
+  
+    // Limpio el contenido anterior del historial en el DOM
+    let historialDiv = document.getElementById("historialDiv");
+    historialDiv.innerHTML = "";
+  });
+  
+
 });
 
 

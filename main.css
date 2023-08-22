@@ -48,6 +48,14 @@ body, h1, h2, p {
     text-align: center;
     border: solid 2px;
   }
+
+  #container {
+    display: flex !important;
+    justify-content: center;
+
+  }
+  
+
   .sucursal {
     background-color: #fff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
