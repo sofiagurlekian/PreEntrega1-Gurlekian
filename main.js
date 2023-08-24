@@ -164,12 +164,14 @@ let monto = document.getElementById("monto");
 
 monto.addEventListener("keyup", (e) => {
     const valorMonto = parseFloat(monto.value);
+    //Operador Ternario
+    !isNaN(valorMonto) && valorMonto >= 1000 ? monto.className = "rojo" : monto.className = "verde";
 
-    if (!isNaN(valorMonto) && valorMonto >= 1000) {
-        monto.className = "rojo";
-    } else{
-        monto.className = "verde";
-    }
+    // if (!isNaN(valorMonto) && valorMonto >= 1000) {
+    //     monto.className = "rojo";
+    // } else{
+    //     monto.className = "verde";
+    // }
 });
 
 let info = [];
