@@ -20,9 +20,11 @@ if (nombre === null || apellido === null || edad === null) {
   localStorage.setItem("Apellido", apellido);
   localStorage.setItem("Edad", edad);
 
-  alert(`Bienvenido/a a TRAM: su casa de cambio de confianza, ${nombre} ${apellido}.`);
+  
+  Swal.fire(`Bienvenido/a a TRAM: su casa de cambio de confianza, ${nombre} ${apellido}.`);
 } else {
-  alert(`Bienvenido/a nuevamente a TRAM, ${nombre} ${apellido}.`);
+  
+  Swal.fire(`Bienvenido/a nuevamente a TRAM, ${nombre} ${apellido}.`);
 }
 
 
@@ -51,9 +53,9 @@ let tasasDeCambio = {
 if (edad >= 18){
     let subsidio = prompt ("Es usted beneficiario del subsidio a las tarifas de electricidad, gas y agua?").toLowerCase();
         if(subsidio === "si"){
-            alert ("No puede operar en el mercado cambiario");
+            alert("No puede operar en el mercado cambiario");
         } else{
-            alert ("Puede operar en el mercado cambiario.");
+            alert("Puede operar en el mercado cambiario.");
 
            //Para realizar el cambio de divisas debe ingresar su nro de DNI, el de su madre y el de su padre
 
@@ -185,7 +187,11 @@ formulario.addEventListener("submit", (e) => {
   if(inputs[0].value === ""){
     alert("Campo Obligatorio")
   } else if(inputs[1].value === "Elija la moneda con la que desea operar"){
-    alert("Elija una moneda")
+    Swal.fire({
+      icon: 'error',
+      title: 'Imposible realizar transacción',
+      text: 'Debe elegir una moneda',
+    })
   } else{
     let conversion = {
         monto: parseFloat(inputs[0].value),
@@ -199,7 +205,12 @@ formulario.addEventListener("submit", (e) => {
     let tasaDeCambio = tasasDeCambio[conversion.moneda];
     let montoConvertido = conversion.monto * tasaDeCambio;
 
-    alert(`Monto convertido a ARS: ${montoConvertido}`);
+    
+    Swal.fire(
+      'Operación exitosa',
+      `Monto convertido: ${montoConvertido} ARS`,
+      'success'
+    );
 
     //JSON
 
