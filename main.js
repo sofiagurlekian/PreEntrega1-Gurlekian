@@ -28,7 +28,6 @@ if (nombre === null || apellido === null || edad === null) {
 }
 
 
-
 // Objeto que almacena las tasas de cambio
 let tasasDeCambio = {
     usd: 550,
@@ -252,5 +251,20 @@ formulario.addEventListener("submit", (e) => {
 });
 
 
+//FETCH
+let listado = document.getElementById ("listado");
 
+fetch("./data.json")
+.then(response => response.json())
+.then((data) => {
+  data.forEach(tasa => {
+    const li = document.createElement("li");
+    li.innerHTML = `
+    <h2> Moneda: ${tasa.moneda} </h2>
+    <p> Valor: ${tasa.valor} ARS </p>
+    `;
+
+    listado.append(li);
+  });  
+})
 

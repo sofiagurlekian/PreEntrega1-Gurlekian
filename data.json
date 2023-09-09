@@ -1,0 +1,6 @@
+[
+    { "moneda": "USD", "valor":550 },
+    {"moneda": "BRL", "valor" : 100},
+    {"moneda": "UYU", "valor": 50}
+]
+
