@@ -254,13 +254,13 @@ formulario.addEventListener("submit", (e) => {
 //FETCH
 let listado = document.getElementById ("listado");
 
-fetch("./data.json")
+fetch('https://sofiagurlekian.github.io/PreEntrega3-Javascript-Gurlekian/data.json')
 .then(response => response.json())
 .then((data) => {
   data.forEach(tasa => {
     const li = document.createElement("li");
     li.innerHTML = `
-    <h2> Moneda: ${tasa.moneda} </h2>
+    <h3> Moneda: ${tasa.moneda} </h3>
     <p> Valor: ${tasa.valor} ARS </p>
     `;
 
